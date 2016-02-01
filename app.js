@@ -8,7 +8,7 @@ var errorHandler = require('errorhandler');
 var logger = require('morgan');
 var flash = require('express-flash');
 var mongoose = require('mongoose');
-var sass = require('node-sass');
+
 var expressValidator = require('express-validator');
 var favicon = require('serve-favicon');
 var connectAssets = require('connect-assets');
@@ -71,11 +71,13 @@ app.use(function(req, res, next) {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
-sass.render({
-  file: '/public/css/style.scss'
-}, function(err, result) {
-  // no idea what goes in here
-});
+app.use(require('node-sass-middleware')({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: true,
+  sourceMap: true
+}));
+
 
 // App routes
 // ===========================
@@ -90,4 +92,4 @@ app.listen(3000, function() {
   console.log('Server is running on port 3000!');
 });
 
-// module.exports = app;
+module.exports = app;
