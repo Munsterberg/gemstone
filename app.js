@@ -8,7 +8,7 @@ var errorHandler = require('errorhandler');
 var logger = require('morgan');
 var flash = require('express-flash');
 var mongoose = require('mongoose');
-
+var sass = require('node-sass-middleware');
 var expressValidator = require('express-validator');
 var favicon = require('serve-favicon');
 var connectAssets = require('connect-assets');
@@ -66,17 +66,15 @@ app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
 });
-app.use(function(req, res, next) {
-  if (/api/i.test(req.path)) req.session.returnTo = req.path;
-  next();
-});
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
-app.use(require('node-sass-middleware')({
+app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true,
+  outputStyle: 'compressed',
+  // Uncomment for SASS support, otherwise leave alone for SCSS
+  // indentedSyntax: true,
   sourceMap: true
 }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // App routes
