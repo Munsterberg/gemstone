@@ -77,9 +77,9 @@ app.use(sass({
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// App routes
+// Call App routes
 // ===========================
-app.get('/', homeController.getIndexPage);
+homeController(app);
 
 
 // Error Handler

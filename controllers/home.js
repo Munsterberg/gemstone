@@ -1,8 +1,12 @@
 // Example schema usage
 // var Example = require('../models/Schema');
 
-exports.getIndexPage = function(req, res) {
-  res.render('index', {
-    title: 'Home'
+module.exports = function(app) {
+  
+  app.get('/', function(req, res) {
+    res.render('index', {
+      title: 'Home'
+    });
   });
+  
 };
