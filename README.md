@@ -25,3 +25,7 @@ npm install nodemon -g
 
 nodemon app.js
 ```
+
+## What is this?
+
+This is a node.js application boilerplate that I use for my simple projects that require a quick setup. It follows MVC techniques and allows users to quickly start building node apps. If you have any questions please email me at jake@oshawadesign.com. I created primarily for myself, so you will see changes quite often depending on my personal preferences, e.g. view engine changes.
