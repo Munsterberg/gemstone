@@ -1,33 +1,33 @@
 // Module Dependencies
 // ===========================
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var errorHandler = require('errorhandler');
-var logger = require('morgan');
-var flash = require('express-flash');
-var mongoose = require('mongoose');
-var sass = require('node-sass-middleware');
-var expressValidator = require('express-validator');
-var favicon = require('serve-favicon');
-var connectAssets = require('connect-assets');
-var methodOverride = require('method-override');
-var lusca = require('lusca');
-var path = require('path');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const errorHandler = require('errorhandler');
+const logger = require('morgan');
+const flash = require('express-flash');
+const mongoose = require('mongoose');
+const sass = require('node-sass-middleware');
+const expressValidator = require('express-validator');
+const favicon = require('serve-favicon');
+const connectAssets = require('connect-assets');
+const methodOverride = require('method-override');
+const lusca = require('lusca');
+const path = require('path');
 
 
 // Controllers
 // ===========================
-var homeController = require('./controllers/home');
+const homeController = require('./controllers/home');
 
 // API keys, Passport info, and Secrets
 // ===========================
-var secrets = require('./config/secrets');
+const secrets = require('./config/secrets');
 
 
 // Create Express App
-var app = express();
+const app = express();
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/database');
