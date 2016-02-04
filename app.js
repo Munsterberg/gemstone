@@ -1,3 +1,7 @@
+// Load dotenv
+require('dotenv').config();
+
+
 // Module Dependencies
 // ===========================
 const express = require('express');
@@ -30,7 +34,7 @@ const secrets = require('./config/secrets');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/database');
+mongoose.connect(process.env.MONGO_URI);
 mongoose.connection.on('error', function() {
   console.error('MongoDB connection error. Please make sure MongoDB is running.');
 });
