@@ -34,7 +34,7 @@ const secrets = require('./config/secrets');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/database');
 mongoose.connection.on('error', function() {
   console.error('MongoDB connection error. Please make sure MongoDB is running.');
 });
