@@ -19,6 +19,7 @@ const methodOverride = require('method-override');
 const path = require('path');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const csurf = require('csurf');
 
 
 // Controllers
