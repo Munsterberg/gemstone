@@ -18,11 +18,17 @@ const connectAssets = require('connect-assets');
 const methodOverride = require('method-override');
 const lusca = require('lusca');
 const path = require('path');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 
 
 // Controllers
 // ===========================
 const homeController = require('./controllers/home');
+
+// Models
+// ===========================
+const User = require('./models/User');
 
 // API keys, Passport info, and Secrets
 // ===========================
@@ -71,6 +77,18 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Passport Config
+// ===========================
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+// Passport middleware for sending user to templates/views
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 // Call App routes
 // ===========================
