@@ -67,7 +67,7 @@ app.use(session({
 }));
 app.use(flash());
 app.use(lusca({
-  csrf: true,
+  csrf: false, // temporary until csrf added
   xframe: 'SAMEORIGIN',
   xssProtection: true
 }));
