@@ -35,7 +35,17 @@ module.exports = function(app) {
   });
   
   // GET login form
+  app.get('/login', function(req, res) {
+    res.render('login', {
+      title: 'Login'
+    });
+  });
   
   // POST login form
+  app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  }), function(req, res) {
+  });
   
 };
