@@ -1,25 +1,27 @@
 const passport = require('passport');
 const User = require('../models/User');
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
 
 module.exports = function(app) {
   
   // GET Index page
   app.get('/', function(req, res) {
-    console.log(res.locals.csrf)
     res.render('index', {
       title: 'Home'
     });
   });
   
   // GET register form
-  app.get('/register', function(req, res) {
+  app.get('/register', csrfProtection, function(req, res) {
     res.render('register', {
-      title: 'Register'
+      title: 'Register',
+      csrfToken: req.csrfToken()
     });
   });
   
   // POST register form
-  app.post('/register', function(req, res) {
+  app.post('/register', csrfProtection, function(req, res) {
     const user = new User({
       username: req.body.username,
       email: req.body.email
@@ -37,14 +39,15 @@ module.exports = function(app) {
   });
   
   // GET login form
-  app.get('/login', function(req, res) {
+  app.get('/login', csrfProtection, function(req, res) {
     res.render('login', {
-      title: 'Login'
+      title: 'Login',
+      csrfToken: req.csrfToken()
     });
   });
   
   // POST login form
-  app.post('/login', passport.authenticate('local', {
+  app.post('/login', csrfProtection, passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
   }), function(req, res) {
