@@ -32,6 +32,33 @@ npm install gulp -g
 // Run project using gulp
 gulp
 ```
+## Prerequisites
+The following must be installed:
+- Node.js
+- npm
+- MongoDB
+
+### DOTENV IMPORTANT
+This project includes dotenv support. Dotenv is used to create environment variables that are not published to github. 
+
+For more info visit [dotenv](https://www.npmjs.com/package/dotenv)
+
+#### Installing Dotenv
+```
+// Install dotenv through npm
+npm install dotenv --save
+
+// Create a dotenv file in the root of your project
+touch .env
+
+// Add the configuration options
+SECRET=secretgoeshere
+MONGO_URI=mongodb://localhost:27017/database
+PORT=3000
+
+// You can access these variables like so
+process.env.SECRET
+```
 
 This project was heavily influenced by the [Hackathon Starter](https://github.com/sahat/hackathon-starter)
 
