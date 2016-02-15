@@ -12,7 +12,6 @@ const errorHandler = require('errorhandler');
 const logger = require('morgan');
 const flash = require('express-flash');
 const mongoose = require('mongoose');
-const sass = require('node-sass-middleware');
 const expressValidator = require('express-validator');
 const favicon = require('serve-favicon');
 const connectAssets = require('connect-assets');
@@ -70,14 +69,6 @@ app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
 });
-app.use(sass({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  outputStyle: 'compressed',
-  // Uncomment for SASS support, otherwise leave alone for SCSS
-  // indentedSyntax: true,
-  sourceMap: true
-}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 

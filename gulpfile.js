@@ -13,9 +13,9 @@ gulp.task('start', function() {
 });
 
 gulp.task('compile-css', function() {
-  return gulp.src('public/stylesheets/scss/**/*.scss')
+  return gulp.src('public/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('public/stylesheets'));
+    .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('watch', function() {
