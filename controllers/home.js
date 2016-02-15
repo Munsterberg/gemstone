@@ -3,7 +3,9 @@ const User = require('../models/User');
 
 module.exports = function(app) {
   
+  // GET Index page
   app.get('/', function(req, res) {
+    console.log(res.locals.csrf)
     res.render('index', {
       title: 'Home'
     });

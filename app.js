@@ -16,7 +16,6 @@ const expressValidator = require('express-validator');
 const favicon = require('serve-favicon');
 const connectAssets = require('connect-assets');
 const methodOverride = require('method-override');
-const lusca = require('lusca');
 const path = require('path');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -66,11 +65,6 @@ app.use(session({
   secret: secrets.sessionSecret
 }));
 app.use(flash());
-app.use(lusca({
-  csrf: false, // temporary until csrf added
-  xframe: 'SAMEORIGIN',
-  xssProtection: true
-}));
 app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
