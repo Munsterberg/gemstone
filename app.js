@@ -30,11 +30,6 @@ const homeController = require('./controllers/home');
 // ===========================
 const User = require('./models/User');
 
-// API keys, Passport info, and Secrets
-// ===========================
-const secrets = require('./config/secrets');
-
-
 // Create Express App
 const app = express();
 
@@ -63,7 +58,7 @@ app.use(cookieParser());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: secrets.sessionSecret
+  secret: process.env.SECRET
 }));
 app.use(flash());
 app.use(function(req, res, next) {
