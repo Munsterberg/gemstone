@@ -19,5 +19,5 @@ gulp.task('compile-css', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('public/stylesheets/scss/**/*.scss', ['compile-css']);
+  gulp.watch('public/scss/**/*.scss', ['compile-css']);
 });
